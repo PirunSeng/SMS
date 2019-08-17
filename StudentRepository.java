@@ -1,6 +1,8 @@
 import java.sql.*;
 import java.util.*;
 
+// import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
 public class StudentRepository{
 	
 	// public static int save(Student p){
@@ -89,32 +91,82 @@ public class StudentRepository{
 		}
 		return arr;
 	}
+
+  public static Student findById(int id){
+    Student student = new Student();
+		try{
+			Connection con = DBManager.getInstance().getConnection();
+			String SQL = "SELECT * FROM students WHERE id=?";
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery(SQL);
+
+			while(rs.next()){
+				student.setId(rs.getInt("id"));
+				student.setName(rs.getString("name"));
+				student.setDateOfBirth(rs.getString("date_of_birth"));
+				student.setCourse(rs.getString("course"));
+			}
+		}catch(SQLException se){
+			System.out.println(se);
+		}
+		
+		return student;
+	}
 	
-	// public static ArrayList<Student> findByName(String name){
-	// 	ArrayList<Student> arr = new ArrayList<Student>();
+	public static ArrayList<Student> findByName(String name){
+		ArrayList<Student> students = new ArrayList<Student>();
 		
-	// 	try{
-	// 		String QRY = "SELECT * FROM Student WHERE name LIKE(?) ORDER BY id";
-	// 		Connection con = DBManager.getInstance().getConnection();
-	// 		PreparedStatement pstmt = con.prepareStatement(QRY);
-	// 		pstmt.setString(1, "%" + name + "%");
-	// 		ResultSet rs = pstmt.executeQuery();
+		try{
+			String QRY = "SELECT * FROM students WHERE name LIKE(?) ORDER BY id";
+			Connection con = DBManager.getInstance().getConnection();
+			PreparedStatement pstmt = con.prepareStatement(QRY);
+			pstmt.setString(1, "%" + name + "%");
+			ResultSet rs = pstmt.executeQuery();
 			
-	// 		while(rs.next()){
-	// 			Student p = new Student();
-	// 			p.setId(rs.getInt("Id"));
-	// 			p.setShortName(rs.getString("ShortName"));
-	// 			p.setName(rs.getString("Name"));
-	// 			arr.add(p);
-	// 		}
+			while(rs.next()){
+				Student student = new Student();
+				student.setId(rs.getInt("id"));
+				student.setName(rs.getString("name"));
+				student.setDateOfBirth(rs.getString("date_of_birth"));
+				student.setCourse(rs.getString("course"));
+				students.add(student);
+			}
 			
-	// 		pstmt.close();
-	// 		con.close();
+			pstmt.close();
+			con.close();
 			
-	// 	}catch(SQLException se){
-	// 		System.out.println(se);
-	// 	}
-	// 	return arr;
-	// }
+		}catch(SQLException se){
+			System.out.println(se);
+		}
+		return students;
+	}
+
+  public static ArrayList<Student> findByCourse(String course){
+		ArrayList<Student> students = new ArrayList<Student>();
 		
+		try{
+			String QRY = "SELECT * FROM students WHERE course LIKE(?) ORDER BY id";
+			Connection con = DBManager.getInstance().getConnection();
+			PreparedStatement pstmt = con.prepareStatement(QRY);
+			pstmt.setString(1, "%" + course + "%");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Student student = new Student();
+				student.setId(rs.getInt("id"));
+				student.setName(rs.getString("name"));
+				student.setDateOfBirth(rs.getString("date_of_birth"));
+				student.setCourse(rs.getString("course"));
+				students.add(student);
+			}
+			
+			pstmt.close();
+			con.close();
+			
+		}catch(SQLException se){
+			System.out.println(se);
+		}
+		return students;
+	}
 }

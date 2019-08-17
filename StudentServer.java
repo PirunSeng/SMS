@@ -25,21 +25,21 @@ public class StudentServer extends UnicastRemoteObject
 		return StudentRepository.findAll();
 	}
 
-  // public Student findById(int id){
-	// 	return StudentRepository.findById(id);
-	// }
+  public Student findById(int id){
+		return StudentRepository.findById(id);
+	}
 
   // public int delete(int id){
-	// 	return StudentRepository.findById(id);
+	// 	return StudentRepository.delete(id);
 	// }
 	
-	// public ArrayList<Student> findByName(String criteria){
-	// 	return StudentRepository.findByName(criteria);
-	// }
+	public ArrayList<Student> findByName(String criteria){
+		return StudentRepository.findByName(criteria);
+	}
 
-  // public ArrayList<Student> findByCourse(String criteria){
-	// 	return StudentRepository.findByCourse(criteria);
-	// }
+  public ArrayList<Student> findByCourse(String criteria){
+		return StudentRepository.findByCourse(criteria);
+	}
 	
 	public static void main(String[] args){
 		try{

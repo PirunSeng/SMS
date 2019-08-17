@@ -31,6 +31,6 @@ public class Student implements Serializable{
 	public void setCourse(String course) { course_ = course;}
 
 	public String toString(){
-		return name_ + " - " + dateOfBirth_ + " - " + course_;
+		return id_ + " - " + name_ + " - " + dateOfBirth_ + " - " + course_;
 	}
 }
