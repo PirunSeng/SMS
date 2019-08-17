@@ -10,16 +10,15 @@ public class StudentClient{
 			// System.out.println("Number of Students deleted = " + remoteStudent.deleteAll());
 
 			//Save Student
-			// Student prov = new Student();
-			// prov.setName("Phalla Chab");
-			// prov.setDateOfBirth("1995-01-01");
-			// prov.setCourse("Net");
+      System.out.println("-----------------");
+			System.out.println("Create new student");
+			Student newStudent = new Student();
+			newStudent.setName("SONG");
+			newStudent.setDateOfBirth("2000-01-01");
+			newStudent.setCourse("Research");
 
-			// int iRet = remoteStudent.save(prov);
-			// System.out.println("Save " + prov.toString() + " is " + retStr(iRet));
-			
-			// Student bat = new Student("PIRUN", "JAVA");
-			// System.out.println("Save " + bat.toString() + " is " + retStr(remoteStudent.save(bat)));
+			int iRet = remoteStudent.save(newStudent);
+			System.out.println("Save " + newStudent.previewString() + " is " + retStr(iRet));
 			
 			// System.out.println("-----------------");
 			// System.out.println("Find by name composed of Kam");

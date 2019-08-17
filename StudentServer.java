@@ -13,9 +13,9 @@ public class StudentServer extends UnicastRemoteObject
 		super();
 	}
 	
-	// public int save(Student p){
-	// 	return StudentRepository.save(p);
-	// }
+	public int save(Student p){
+		return StudentRepository.save(p);
+	}
 	
 	// public int update(Student p){
 	// 	return StudentRepository.update(p);

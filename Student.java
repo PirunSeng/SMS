@@ -33,4 +33,8 @@ public class Student implements Serializable{
 	public String toString(){
 		return id_ + " - " + name_ + " - " + dateOfBirth_ + " - " + course_;
 	}
+
+  public String previewString() {
+		return name_ + " - " + dateOfBirth_ + " - " + course_;
+  }
 }
