@@ -5,8 +5,10 @@ import java.util.*;
 
 public class StudentRepository{
 	
-	public static int save(Student std){
-		int iRet = -1;
+	// public static int save(Student std){
+	public static boolean save(Student std){
+		// int iRet = -1;
+		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
 			String SQL = "INSERT INTO students(name, date_of_birth, course) VALUES (?,?,?)"; 
@@ -15,19 +17,25 @@ public class StudentRepository{
 			pstmt.setString(2, std.getDateOfBirth());
 			pstmt.setString(3, std.getCourse());
 			
-			iRet = pstmt.executeUpdate();
+			// iRet = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
 			pstmt.close();
 			con.close();
 		}catch(SQLException se){
-			System.out.println(se);
+			// System.out.println(se);
+      System.out.println("Error creating " + std.getName() + " " + std.getDateOfBirth() + " " + std.getCourse());
+			bRet = false;
 		}
 		
-		return iRet;
+		// return iRet;
+		return bRet;
 	}
 	
-	public static int update(Student std, int id){
-		int iRet = -1;
+	// public static int update(Student std, int id){
+	public static boolean update(Student std, int stdId){
+		// int iRet = -1;
+		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
 			String SQL = "UPDATE students SET name=?, date_of_birth=?, course=? WHERE id=?";
@@ -35,17 +43,20 @@ public class StudentRepository{
 			pstmt.setString(1, std.getName());
 			pstmt.setString(2, std.getDateOfBirth());
 			pstmt.setString(3, std.getCourse());
-			pstmt.setInt(4, id);
+			pstmt.setInt(4, stdId);
 			
-			iRet = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
 			pstmt.close();
 			con.close();
 		}catch(SQLException se){
 			System.out.println(se);
+      System.out.println("Error updating " + stdId + " " + std.getName() + " " + std.getDateOfBirth() + " " + std.getCourse());
+			bRet = false;
 		}
 		
-		return iRet;
+		// return iRet;
+		return bRet;
 	}
 
 	public static int delete(int id){
@@ -107,6 +118,9 @@ public class StudentRepository{
 				std.setDateOfBirth(rs.getString("date_of_birth"));
 				std.setCourse(rs.getString("course"));
 			}
+
+      pstmt.close();
+			con.close();
 		}catch(SQLException se){
 			System.out.println(se);
 		}

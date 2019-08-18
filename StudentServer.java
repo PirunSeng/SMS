@@ -12,13 +12,15 @@ public class StudentServer extends UnicastRemoteObject
   public StudentServer() throws RemoteException {
 		super();
 	}
-	
-	public int save(Student std){
+
+  // public int save(Student std){
+  public boolean save(Student std){
 		return StudentRepository.save(std);
 	}
 	
-	public int update(Student std, int id){
-		return StudentRepository.update(std, id);
+	// public int update(Student std, int stdId){
+	public boolean update(Student std, int stdId){
+		return StudentRepository.update(std, stdId);
 	}
 	
 	public ArrayList<Student> findAll(){
