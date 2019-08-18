@@ -30,7 +30,7 @@ public class StudentRepository{
 		int iRet = -1;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
-			String SQL = "UPDATE students SET name=?, date_of_birth=?, course=? WHERE Id=?";
+			String SQL = "UPDATE students SET name=?, date_of_birth=?, course=? WHERE id=?";
 			PreparedStatement pstmt = con.prepareStatement(SQL);
 			pstmt.setString(1, p.getName());
 			pstmt.setString(2, p.getDateOfBirth());
@@ -48,23 +48,23 @@ public class StudentRepository{
 		return iRet;
 	}
 
-	// public static int deleteAll(){
-	// 	int iRet = -1;
-	// 	try{
-	// 		Connection con = DBManager.getInstance().getConnection();
-	// 		String SQL = "DELETE FROM Student;";
-	// 		PreparedStatement pstmt = con.prepareStatement(SQL);
-
-	// 		iRet = pstmt.executeUpdate();
+	public static int delete(int id){
+		int iRet = -1;
+		try{
+			Connection con = DBManager.getInstance().getConnection();
+			String SQL = "DELETE FROM students WHERE id=?;";
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+      pstmt.setInt(1, id);
+			iRet = pstmt.executeUpdate();
 			
-	// 		pstmt.close();
-	// 		con.close();
-	// 	}catch(SQLException se){
-	// 		System.out.println(se);
-	// 	}
+			pstmt.close();
+			con.close();
+		}catch(SQLException se){
+			System.out.println(se);
+		}
 		
-	// 	return iRet;
-	// }
+		return iRet;
+	}
 	
 	public static ArrayList<Student> findAll(){
 		ArrayList<Student> arr = new ArrayList<Student>();

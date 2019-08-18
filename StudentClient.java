@@ -17,15 +17,21 @@ public class StudentClient{
 			// int iRet = remoteStudent.save(newStudent);
 			// System.out.println("Save " + newStudent.previewString() + " is " + retStr(iRet));
 
-			// Update
-			System.out.println("-----------------");
-			System.out.println("Update student with id = 2");
-      int id = 2;
-			Student updatedStudent = new Student();
-			updatedStudent.setName("Seng Pirun");
-			updatedStudent.setDateOfBirth("1999-09-09");
-			updatedStudent.setCourse("Java");
-			System.out.println("Update to student with id = " + id + " " + updatedStudent.previewString() + " is " + retStr(remoteStudent.update(updatedStudent, id)));
+			// Update, works
+			// System.out.println("-----------------");
+			// System.out.println("Update student with id = 2");
+      // int id = 2;
+			// Student updatedStudent = new Student();
+			// updatedStudent.setName("Seng Pirun");
+			// updatedStudent.setDateOfBirth("1999-09-09");
+			// updatedStudent.setCourse("Java");
+			// System.out.println("Update to student with id = " + id + " " + updatedStudent.previewString() + " is " + retStr(remoteStudent.update(updatedStudent, id)));
+
+      // Delete
+      System.out.println("-----------------");
+      System.out.println("Delete student with id = 4");
+      int id = 4;
+      System.out.println("Delete student is " + retStr(remoteStudent.delete(id)));
 
       // findAll, works
 			System.out.println("-----------------");

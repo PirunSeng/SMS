@@ -29,9 +29,9 @@ public class StudentServer extends UnicastRemoteObject
 		return StudentRepository.findById(id);
 	}
 
-  // public int delete(int id){
-	// 	return StudentRepository.delete(id);
-	// }
+  public int delete(int id){
+		return StudentRepository.delete(id);
+	}
 	
 	public ArrayList<Student> findByName(String criteria){
 		return StudentRepository.findByName(criteria);
