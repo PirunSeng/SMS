@@ -17,9 +17,9 @@ public class StudentServer extends UnicastRemoteObject
 		return StudentRepository.save(p);
 	}
 	
-	// public int update(Student p){
-	// 	return StudentRepository.update(p);
-	// } 
+	public int update(Student p, int id){
+		return StudentRepository.update(p, id);
+	}
 	
 	public ArrayList<Student> findAll(){
 		return StudentRepository.findAll();

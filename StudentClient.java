@@ -6,31 +6,28 @@ public class StudentClient{
 		try{
 			IRemoteStudent remoteStudent = (IRemoteStudent)Naming.lookup("rmi://127.0.0.1/StudentServer");
 			ArrayList<Student> allStudents, studentsFilteredByName, studentsFilteredByCourse;
-			//Clear records
-			// System.out.println("Number of Students deleted = " + remoteStudent.deleteAll());
 
-			//Save Student
-      System.out.println("-----------------");
-			System.out.println("Create new student");
-			Student newStudent = new Student();
-			newStudent.setName("SONG");
-			newStudent.setDateOfBirth("2000-01-01");
-			newStudent.setCourse("Research");
+			// Save, works
+      // System.out.println("-----------------");
+			// System.out.println("Create new student");
+			// Student newStudent = new Student();
+			// newStudent.setName("SONG");
+			// newStudent.setDateOfBirth("2000-01-01");
+			// newStudent.setCourse("Research");
+			// int iRet = remoteStudent.save(newStudent);
+			// System.out.println("Save " + newStudent.previewString() + " is " + retStr(iRet));
 
-			int iRet = remoteStudent.save(newStudent);
-			System.out.println("Save " + newStudent.previewString() + " is " + retStr(iRet));
-			
-			// System.out.println("-----------------");
-			// System.out.println("Find by name composed of Kam");
+			// Update
+			System.out.println("-----------------");
+			System.out.println("Update student with id = 2");
+      int id = 2;
+			Student updatedStudent = new Student();
+			updatedStudent.setName("Seng Pirun");
+			updatedStudent.setDateOfBirth("1999-09-09");
+			updatedStudent.setCourse("Java");
+			System.out.println("Update to student with id = " + id + " " + updatedStudent.previewString() + " is " + retStr(remoteStudent.update(updatedStudent, id)));
 
-			//Update Kampong Chhnang to Kampong Speu
-			// System.out.println("-----------------");
-			// System.out.println("Update KaKampong Chhnang to Kampong Speu");
-			// kch.setShortName("KAM");
-			// kch.setName("Kampong Speu");
-			// System.out.println("Update to " + kch.toString() + " is " + retStr(remoteStudent.update(kch)));
-
-      // findAll
+      // findAll, works
 			System.out.println("-----------------");
 			System.out.println("List all Students");
 			allStudents = remoteStudent.findAll();
@@ -38,23 +35,23 @@ public class StudentClient{
 				System.out.println(student.toString());
 			}
 
-      // findBYName
-      System.out.println("-----------------");
-			System.out.println("List students filtered by name: seng");
-			studentsFilteredByName = remoteStudent.findByName("seng");
-			for(Student student : studentsFilteredByName){
-				System.out.println(student.toString());
-			}
+      // findBYName, works
+      // System.out.println("-----------------");
+			// System.out.println("List students filtered by name: seng");
+			// studentsFilteredByName = remoteStudent.findByName("seng");
+			// for(Student student : studentsFilteredByName){
+			// 	System.out.println(student.toString());
+			// }
 
-      // findBYCourse
-      System.out.println("-----------------");
-			System.out.println("List students filtered by course: CG");
-			studentsFilteredByCourse = remoteStudent.findByCourse("cg");
-			for(Student student : studentsFilteredByCourse){
-				System.out.println(student.toString());
-			}
+      // findBYCourse, works
+      // System.out.println("-----------------");
+			// System.out.println("List students filtered by course: CG");
+			// studentsFilteredByCourse = remoteStudent.findByCourse("cg");
+			// for(Student student : studentsFilteredByCourse){
+			// 	System.out.println(student.toString());
+			// }
 
-      // findById
+      // findById, pending
       // System.out.println("-----------------");
       // System.out.println("Find student by id = 2");
       // Student student = remoteStudent.findById(2);

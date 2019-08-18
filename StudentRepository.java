@@ -26,27 +26,27 @@ public class StudentRepository{
 		return iRet;
 	}
 	
-	// public static int update(Student p){
-	// 	int iRet = -1;
-	// 	try{
-	// 		Connection con = DBManager.getInstance().getConnection();
-	// 		String SQL = "UPDATE students SET name=?, date_of_birth=?, course=? WHERE Id=?";
-	// 		PreparedStatement pstmt = con.prepareStatement(SQL);
-	// 		pstmt.setString(1, p.getName());
-	// 		pstmt.setString(2, p.getDateOfBirth());
-	// 		pstmt.setString(3, p.getCourse());
-	// 		pstmt.setInt(4, p.getId());
+	public static int update(Student p, int id){
+		int iRet = -1;
+		try{
+			Connection con = DBManager.getInstance().getConnection();
+			String SQL = "UPDATE students SET name=?, date_of_birth=?, course=? WHERE Id=?";
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, p.getName());
+			pstmt.setString(2, p.getDateOfBirth());
+			pstmt.setString(3, p.getCourse());
+			pstmt.setInt(4, id);
 			
-	// 		iRet = pstmt.executeUpdate();
+			iRet = pstmt.executeUpdate();
 			
-	// 		pstmt.close();
-	// 		con.close();
-	// 	}catch(SQLException se){
-	// 		System.out.println(se);
-	// 	}
+			pstmt.close();
+			con.close();
+		}catch(SQLException se){
+			System.out.println(se);
+		}
 		
-	// 	return iRet;
-	// }
+		return iRet;
+	}
 
 	// public static int deleteAll(){
 	// 	int iRet = -1;
