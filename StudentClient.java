@@ -27,19 +27,19 @@ public class StudentClient{
 			// updatedStudent.setCourse("Java");
 			// System.out.println("Update to student with id = " + id + " " + updatedStudent.previewString() + " is " + retStr(remoteStudent.update(updatedStudent, id)));
 
-      // Delete
-      System.out.println("-----------------");
-      System.out.println("Delete student with id = 4");
-      int id = 4;
-      System.out.println("Delete student is " + retStr(remoteStudent.delete(id)));
+      // Delete, works
+      // System.out.println("-----------------");
+      // System.out.println("Delete student with id = 4");
+      // int id = 4;
+      // System.out.println("Delete student is " + retStr(remoteStudent.delete(id)));
 
       // findAll, works
-			System.out.println("-----------------");
-			System.out.println("List all Students");
-			allStudents = remoteStudent.findAll();
-			for(Student student: allStudents){
-				System.out.println(student.toString());
-			}
+			// System.out.println("-----------------");
+			// System.out.println("List all Students");
+			// allStudents = remoteStudent.findAll();
+			// for(Student student: allStudents){
+			// 	System.out.println(student.toString());
+			// }
 
       // findBYName, works
       // System.out.println("-----------------");
@@ -58,12 +58,10 @@ public class StudentClient{
 			// }
 
       // findById, pending
-      // System.out.println("-----------------");
-      // System.out.println("Find student by id = 2");
-      // Student student = remoteStudent.findById(2);
-      // System.out.println(student.toString());
-      // int studentId = remoteStudent.findById(4);
-      // System.out.println("Return : " + studentId);
+      System.out.println("-----------------");
+      System.out.println("Find student by id = 2");
+      Student student = remoteStudent.findById(2);
+      System.out.println(student.toString());
 		}catch(Exception e){
 			System.out.println(e);
 		}

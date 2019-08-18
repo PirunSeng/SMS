@@ -99,7 +99,7 @@ public class StudentRepository{
 			String SQL = "SELECT * FROM students WHERE id=?";
 			PreparedStatement pstmt = con.prepareStatement(SQL);
 			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery(SQL);
+			ResultSet rs = pstmt.executeQuery();
 
 			while(rs.next()){
 				student.setId(rs.getInt("id"));
