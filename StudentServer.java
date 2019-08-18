@@ -13,12 +13,12 @@ public class StudentServer extends UnicastRemoteObject
 		super();
 	}
 	
-	public int save(Student p){
-		return StudentRepository.save(p);
+	public int save(Student std){
+		return StudentRepository.save(std);
 	}
 	
-	public int update(Student p, int id){
-		return StudentRepository.update(p, id);
+	public int update(Student std, int id){
+		return StudentRepository.update(std, id);
 	}
 	
 	public ArrayList<Student> findAll(){
@@ -44,8 +44,8 @@ public class StudentServer extends UnicastRemoteObject
 	public static void main(String[] args){
 		try{
 			LocateRegistry.createRegistry(1099);
-			StudentServer ps = new StudentServer();
-			Naming.rebind("StudentServer", ps);
+			StudentServer ss = new StudentServer();
+			Naming.rebind("StudentServer", ss);
 			System.out.println("StudentServer is created!!!");
 		}catch(Exception e){
 			System.out.println(e);
