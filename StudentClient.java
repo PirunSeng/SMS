@@ -14,6 +14,7 @@ public class StudentClient{
 
 			kbd = new Scanner(System.in);
       while(true){
+			  System.out.println("-----------------");
 				System.out.println("Enter your choice : ");
 				System.out.print("1-Save | 2-Update | 3-Delete | 4-FindAll | 5-FindById | 6-FindByName | 7-FindByCourse | 0-Quit  : ");
 				cmd = kbd.nextLine();
@@ -76,8 +77,22 @@ public class StudentClient{
           System.out.println(student.toString());
         } else if (cmd.equals("6")) {
           // findByName
+          System.out.print("Enter Name : ");
+          String nameCriteria = kbd.nextLine();
+          System.out.println("List students filtered by name: " + nameCriteria);
+          studentsFilteredByName = remoteStudent.findByName(nameCriteria);
+          for(Student student : studentsFilteredByName){
+            System.out.println(student.toString());
+          }
         } else if (cmd.equals("7")) {
           // findByCourse
+          System.out.print("Enter Course : ");
+          String courseCriteria = kbd.nextLine();
+          System.out.println("List students filtered by course: " + courseCriteria);
+          studentsFilteredByCourse = remoteStudent.findByCourse(courseCriteria);
+          for(Student student : studentsFilteredByCourse){
+            System.out.println(student.toString());
+          }
         }
         else if(cmd.equals("0")){
 					break;
