@@ -38,7 +38,18 @@ public class StudentClient{
           // update
           Student std = new Student();
           System.out.print("Enter Id : ");
-          std.setId(Integer.parseInt(kbd.nextLine()));
+          String stdId;
+          while(true){
+            stdId = kbd.nextLine();
+            if (stdId.trim().isEmpty()) {
+              System.out.println("Please try again!");
+              System.out.print("Enter Id : ");
+            } else {
+              break;
+            }
+          }
+          int sid = Integer.parseInt(stdId);
+          std.setId(sid);
           System.out.print("Enter Name : ");
           std.setName(kbd.nextLine());
           System.out.print("Enter Date of Birth : ");
