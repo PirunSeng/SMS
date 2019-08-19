@@ -39,17 +39,16 @@ public class StudentClient{
           // update
           Student std = new Student();
           System.out.print("Enter Id : ");
-          String stdId;
-          while(true){
-            stdId = kbd.nextLine();
-            if (stdId.trim().isEmpty()) {
-              System.out.println("Please try again!");
-              System.out.print("Enter Id : ");
-            } else {
+          int sid;
+          while (true) {
+            try {
+              sid = Integer.parseInt(kbd.nextLine());
               break;
+            } catch (Exception e) {
+              System.out.println("Not a number, please try again!");
+              System.out.print("Enter Id : ");
             }
           }
-          int sid = Integer.parseInt(stdId);
           std = remoteStudent.findById(sid);
           if(studentExist(std)) {
             std.setId(sid);
@@ -73,7 +72,16 @@ public class StudentClient{
         } else if (cmd.equals("3")) {
           // delete
           System.out.print("Enter Id : ");
-          int sid = Integer.parseInt(kbd.nextLine());
+          int sid;
+          while (true) {
+            try {
+              sid = Integer.parseInt(kbd.nextLine());
+              break;
+            } catch (Exception e) {
+              System.out.println("Not a number, please try again!");
+              System.out.print("Enter Id : ");
+            }
+          }
           Student std = remoteStudent.findById(sid);
           if(studentExist(std)) {
             boolean bAns = remoteStudent.delete(sid);
@@ -97,7 +105,16 @@ public class StudentClient{
         } else if (cmd.equals("5")) {
           // findById
           System.out.print("Enter Id : ");
-          int stdId       = Integer.parseInt(kbd.nextLine());
+          int stdId;
+          while (true) {
+            try {
+              stdId = Integer.parseInt(kbd.nextLine());
+              break;
+            } catch (Exception e) {
+              System.out.println("Not a number, please try again!");
+              System.out.print("Enter Id : ");
+            }
+          }
           Student student = remoteStudent.findById(stdId);
           if(studentExist(student)) {
             System.out.println(student.toString());
@@ -111,12 +128,11 @@ public class StudentClient{
           String nameCriteria    = kbd.nextLine();
           System.out.println("List students filtered by name: " + nameCriteria);
           studentsFilteredByName = remoteStudent.findByName(nameCriteria);
+          if (studentsFilteredByName.size() == 0) {
+            System.out.println("No results!");
+          }
           for(Student student : studentsFilteredByName){
-            if (student.getId() == 0){
-              System.out.println("Not found!");
-            } else {
-              System.out.println(student.toString());
-            }
+            System.out.println(student.toString());
           }
 
         } else if (cmd.equals("7")) {
@@ -125,6 +141,9 @@ public class StudentClient{
           String courseCriteria    = kbd.nextLine();
           System.out.println("List students filtered by course: " + courseCriteria);
           studentsFilteredByCourse = remoteStudent.findByCourse(courseCriteria);
+          if (studentsFilteredByCourse.size() == 0) {
+            System.out.println("No results!");
+          }
           for(Student student : studentsFilteredByCourse){
             System.out.println(student.toString());
           }
