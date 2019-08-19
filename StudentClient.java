@@ -55,10 +55,6 @@ public class StudentClient{
           // delete
           System.out.print("Enter Id : ");
           int sid = Integer.parseInt(kbd.nextLine());
-          // System.out.println("-----------------");
-          // System.out.println("Delete student with id = 3");
-          // int sid = 3;
-          // System.out.println("Delete student is " + retStr(remoteStudent.delete(sid)));
           boolean bAns = remoteStudent.delete(sid);
           if(bAns){
             System.out.println("\t Successfully delete the student");
@@ -67,6 +63,11 @@ public class StudentClient{
           }
         } else if (cmd.equals("4")) {
           // findAll
+          allStudents = remoteStudent.findAll();
+          System.out.println("List all " + allStudents.size() + " students:");
+          for(Student student: allStudents){
+            System.out.println(student.toString());
+          }
         } else if (cmd.equals("5")) {
           // findById
         } else if (cmd.equals("6")) {
