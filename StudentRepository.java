@@ -4,10 +4,7 @@ import java.util.*;
 // import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class StudentRepository{
-	
-	// public static int save(Student std){
 	public static boolean save(Student std){
-		// int iRet = -1;
 		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
@@ -16,25 +13,19 @@ public class StudentRepository{
 			pstmt.setString(1, std.getName());
 			pstmt.setString(2, std.getDateOfBirth());
 			pstmt.setString(3, std.getCourse());
-			
-			// iRet = pstmt.executeUpdate();
 			pstmt.executeUpdate();
 			
 			pstmt.close();
 			con.close();
 		}catch(SQLException se){
-			// System.out.println(se);
       System.out.println("Error creating " + std.getName() + " " + std.getDateOfBirth() + " " + std.getCourse());
 			bRet = false;
 		}
-		
-		// return iRet;
+
 		return bRet;
 	}
-	
-	// public static int update(Student std, int id){
-	public static boolean update(Student std, int stdId){
-		// int iRet = -1;
+
+	public static boolean update(Student std){
 		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
@@ -43,7 +34,7 @@ public class StudentRepository{
 			pstmt.setString(1, std.getName());
 			pstmt.setString(2, std.getDateOfBirth());
 			pstmt.setString(3, std.getCourse());
-			pstmt.setInt(4, stdId);
+			pstmt.setInt(4, std.getId());
 			
 			pstmt.executeUpdate();
 			
@@ -51,17 +42,14 @@ public class StudentRepository{
 			con.close();
 		}catch(SQLException se){
 			System.out.println(se);
-      System.out.println("Error updating " + stdId + " " + std.getName() + " " + std.getDateOfBirth() + " " + std.getCourse());
+      System.out.println("Error updating " + std.toString());
 			bRet = false;
 		}
 		
-		// return iRet;
 		return bRet;
 	}
 
-	// public static int delete(int id){
 	public static boolean delete(int stdId){
-		// int iRet = -1;
 		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
@@ -78,7 +66,6 @@ public class StudentRepository{
       bRet = false;
 		}
 		
-		// return iRet;
 		return bRet;
 	}
 

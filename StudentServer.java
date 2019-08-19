@@ -13,14 +13,12 @@ public class StudentServer extends UnicastRemoteObject
 		super();
 	}
 
-  // public int save(Student std){
   public boolean save(Student std){
 		return StudentRepository.save(std);
 	}
-	
-	// public int update(Student std, int stdId){
-	public boolean update(Student std, int stdId){
-		return StudentRepository.update(std, stdId);
+
+  public boolean update(Student std){
+		return StudentRepository.update(std);
 	}
 	
 	public ArrayList<Student> findAll(){
@@ -31,7 +29,6 @@ public class StudentServer extends UnicastRemoteObject
 		return StudentRepository.findById(id);
 	}
 
-  // public int delete(int id){
   public boolean delete(int id){
 		return StudentRepository.delete(id);
 	}
