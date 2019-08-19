@@ -108,13 +108,13 @@ public class StudentRepository{
 		return arr;
 	}
 
-  public static Student findById(int id){
+  public static Student findById(int stdId){
     Student std = new Student();
 		try{
 			Connection con = DBManager.getInstance().getConnection();
 			String SQL = "SELECT * FROM students WHERE id=?";
 			PreparedStatement pstmt = con.prepareStatement(SQL);
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, stdId);
 			ResultSet rs = pstmt.executeQuery();
 
 			while(rs.next()){

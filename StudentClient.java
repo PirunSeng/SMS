@@ -70,6 +70,10 @@ public class StudentClient{
           }
         } else if (cmd.equals("5")) {
           // findById
+          System.out.print("Enter Id : ");
+          int stdId = Integer.parseInt(kbd.nextLine());
+          Student student = remoteStudent.findById(stdId);
+          System.out.println(student.toString());
         } else if (cmd.equals("6")) {
           // findByName
         } else if (cmd.equals("7")) {
