@@ -59,24 +59,29 @@ public class StudentRepository{
 		return bRet;
 	}
 
-	public static int delete(int id){
-		int iRet = -1;
+	// public static int delete(int id){
+	public static boolean delete(int stdId){
+		// int iRet = -1;
+		boolean bRet = true;
 		try{
 			Connection con = DBManager.getInstance().getConnection();
 			String SQL = "DELETE FROM students WHERE id=?;";
 			PreparedStatement pstmt = con.prepareStatement(SQL);
-      pstmt.setInt(1, id);
-			iRet = pstmt.executeUpdate();
+      pstmt.setInt(1, stdId);
+			pstmt.executeUpdate();
 			
 			pstmt.close();
 			con.close();
 		}catch(SQLException se){
 			System.out.println(se);
+      System.out.println("Error deleting student id : " + stdId);
+      bRet = false;
 		}
 		
-		return iRet;
+		// return iRet;
+		return bRet;
 	}
-	
+
 	public static ArrayList<Student> findAll(){
 		ArrayList<Student> arr = new ArrayList<Student>();
 		
