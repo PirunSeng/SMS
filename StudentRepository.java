@@ -1,8 +1,6 @@
 import java.sql.*;
 import java.util.*;
 
-// import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
 public class StudentRepository{
 	public static boolean save(Student std){
 		boolean bRet = true;

@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class StudentClient{
 	public static void main(String[] args){
-    Scanner kbd; // Read from keyboad
-		String cmd; // User's command: add, search, searchall, quit
+    Scanner kbd;
+		String cmd;
 
 		try{
 			IRemoteStudent remoteStudent = (IRemoteStudent)Naming.lookup("rmi://127.0.0.1/StudentServer");

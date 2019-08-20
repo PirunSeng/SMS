@@ -12,10 +12,10 @@ public class Student implements Serializable{
 	}
 	
 	public Student(int id, String name, String dateOfBirth, String course){
-    id_ = id;
-		name_ = name;
+    id_          = id;
+		name_        = name;
     dateOfBirth_ = dateOfBirth;
-    course_ = course;
+    course_      = course;
 	}
 
   public int getId() { return id_; }

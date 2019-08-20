@@ -41,38 +41,6 @@ public class DBManager {
 		}
 		return con;
 	}
-	
-	// public static Connection getMySQLConnection(){
-	// 	Connection con = null;
-		
-	// 	try{
-			
-	// 		String strCon = "jdbc:mysql://127.0.0.1/test?user=rtuser&password=rtpass";
-	// 		con = DriverManager.getConnection(strCon);
-	// 	}catch(SQLException se){
-	// 		System.out.println(se);
-	// 	}
-	// 	return con;
-	// }
-	
-	// public static Connection getMsAccessConnection(){
-	// 	Connection con = null;
-	// 	try{
-	// 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			
-  //     			String filename = "D:/Working/NID_DB/";
-  //     			filename += "test.mdb";
-  //     			String URL = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=";
-  //    				 URL+= filename + ";}";  
-      
-  //    			 con = DriverManager.getConnection(URL);
-	        
-	// 	}catch(Exception se){
-	// 		System.out.println(se);
-	// 	}
-		
-	// 	return con;
-	// }
 
 	public static Connection getSQLiteConnection(){
 		Connection con = null;
