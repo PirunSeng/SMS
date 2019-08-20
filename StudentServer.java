@@ -4,51 +4,50 @@ import java.rmi.server.*;
 import java.rmi.*;
 import java.util.ArrayList;
 
-public class StudentServer extends UnicastRemoteObject
-					implements IRemoteStudent{
-	
-	private static final long serialVersionUID = 1L;
+public class StudentServer extends UnicastRemoteObject implements IRemoteStudent {
+
+  private static final long serialVersionUID = 1L;
 
   public StudentServer() throws RemoteException {
-		super();
-	}
+    super();
+  }
 
-  public boolean save(Student std){
-		return StudentRepository.save(std);
-	}
+  public boolean save(Student std) {
+    return StudentRepository.save(std);
+  }
 
-  public boolean update(Student std){
-		return StudentRepository.update(std);
-	}
-	
-	public ArrayList<Student> findAll(){
-		return StudentRepository.findAll();
-	}
+  public boolean update(Student std) {
+    return StudentRepository.update(std);
+  }
 
-  public Student findById(int id){
-		return StudentRepository.findById(id);
-	}
+  public ArrayList<Student> findAll() {
+    return StudentRepository.findAll();
+  }
 
-  public boolean delete(int id){
-		return StudentRepository.delete(id);
-	}
-	
-	public ArrayList<Student> findByName(String criteria){
-		return StudentRepository.findByName(criteria);
-	}
+  public Student findById(int id) {
+    return StudentRepository.findById(id);
+  }
 
-  public ArrayList<Student> findByCourse(String criteria){
-		return StudentRepository.findByCourse(criteria);
-	}
-	
-	public static void main(String[] args){
-		try{
-			LocateRegistry.createRegistry(1099);
-			StudentServer ss = new StudentServer();
-			Naming.rebind("StudentServer", ss);
-			System.out.println("StudentServer is created!!!");
-		}catch(Exception e){
-			System.out.println(e);
-		}
-	}
+  public boolean delete(int id) {
+    return StudentRepository.delete(id);
+  }
+
+  public ArrayList<Student> findByName(String criteria) {
+    return StudentRepository.findByName(criteria);
+  }
+
+  public ArrayList<Student> findByCourse(String criteria) {
+    return StudentRepository.findByCourse(criteria);
+  }
+
+  public static void main(String[] args) {
+    try {
+      LocateRegistry.createRegistry(1099);
+      StudentServer ss = new StudentServer();
+      Naming.rebind("StudentServer", ss);
+      System.out.println("StudentServer is created!!!");
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+  }
 }
